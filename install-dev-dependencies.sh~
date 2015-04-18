@@ -31,7 +31,7 @@ if [ ! -f /usr/bin/node ]; then
 fi
 cd $(dirname $0)
 pip install --user -qr requirements.txt
-npm install
+npm install --no-bin-links
 # Install a hook to run tests before pushing.
 if [ ! -f .git/hooks/pre-push ]; then
   ln -s ../../scripts/pre-commit .git/hooks/pre-push

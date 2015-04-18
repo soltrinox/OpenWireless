@@ -29,12 +29,14 @@ sudo apt-get install $ACCEPT_INSTALL_PROMPTS gettext unzip libncurses-dev subver
 if [ ! -f /usr/bin/node ]; then
   sudo ln -s /usr/bin/nodejs /usr/bin/node
 fi
+
 cd $(dirname $0)
 pip install --user -qr requirements.txt
 npm install --no-bin-links
 # Install a hook to run tests before pushing.
 if [ ! -f .git/hooks/pre-push ]; then
-  ln -s ../../scripts/pre-commit .git/hooks/pre-push
+  #ln -s ../../scripts/pre-commit .git/hooks/pre-push
+  cp ../../scripts/pre-commit .git/hooks/pre-push
 fi
 
 if [ -n "$INSTALL_XVFB" ]; then
